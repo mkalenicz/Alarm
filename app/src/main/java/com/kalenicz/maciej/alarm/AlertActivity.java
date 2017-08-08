@@ -26,14 +26,13 @@ public class AlertActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alert);
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        startVibration();
-        View mainView = findViewById(R.id.alert_view);
 
+
+        View mainView = findViewById(R.id.alert_view);
         animation = setupAnimation();
-        mainView.startAnimation(animation);
+        startAlarm(mainView);
 
         stopButton = (Button) findViewById(R.id.stop_button);
-
 
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +40,11 @@ public class AlertActivity extends AppCompatActivity {
                 stopAlarm();
             }
         });
+    }
+
+    private void startAlarm(View mainView) {
+        startVibration();
+        mainView.startAnimation(animation);
     }
 
     private void stopAlarm() {
